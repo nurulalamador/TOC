@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/all.css" rel="stylesheet"/>
+    <script src="js/leader-line.min.js"></script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Number of Symbols: </td>
+                <td><input type="number" value="1" id="symbolNumber"><br/></td>
+            </tr>
+            <tr>
+                <td>Symbols: </td>
+                <td id="symbolInput"><input type="text" id="symbol1"></td>
+            </tr>
+            <tr>
+                <td>Start With: </td>
+                <td><input type="text" class="start"><br/></td>
+                <td><input type="text" class="start"><br/></td>
+            </tr>
+            <tr>
+                <td>Contains: </td>
+                <td><input type="text" id="contain"><br/></td>
+            </tr>
+            <tr>
+                <td>End With: </td>
+                <td><input type="text" id="end"><br/></td>
+            </tr>
+        </table>
+        <button id="generate">Generate NFA</button>
+    </div>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .stateContainer {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 5px 20px;
+        }
+        .state {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            text-align: center;
+            border: #000000 solid 2px;
+            line-height: 42px;
+            margin: 10px 5px;
+        }
+        .initial {
+            width: 10px;
+            height: 150px;
+            display: inline-block;
+            margin: 5px 20px;
+            vertical-align: middle;
+        }
+        .final {
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            text-align: center;
+            border: #000000 solid 2px;
+            margin: 3px auto;
+            line-height: 30px;
+        }
+    </style>
+    <div id="result">
+    </div>
+    <script>
+        symbolNumber.onchange = function(e) {
+            var n = parseInt(e.target.value);
+            symbolInput.innerHTML = "";
+
+            for(i=1; i<=n; i++) {
+                symbolInput.innerHTML += `<input type="text" id="symbol1">  `;
+            }
+            console.log(e);
+        } 
+
+        generate.onclick = function() {
+            var lines = [];
+            var lineIndex = 0;
+
+            var start = document.getElementsByClassName("start");
+            var maxStart;
+
+            if(start[0].value.length > start[1].value.length) {
+                maxStart = 0;
+            }
+            else {
+                maxStart = 1;
+            }
+
+            var totalState = 0;
+            var string = " "+start[maxStart].value+contain.value+end.value;
+            var startString = [" "+start[0].value, " "+start[1].value]
+
+            result.innerHTML = `<div class="initial" id="qS"></div>`;
+
+            var prevState = ['qS'];
+            
+            for(i=0; i<start[maxStart].value.length; i++) {
+                if(start[0].value.charAt(i) == start[1].value.charAt(i) || start[0].value.charAt(i) == '' || start[1].value.charAt(i) == '') {
+                    result.innerHTML += `
+                    <div class="stateContainer">
+                        <div class="state" id="q${totalState}">
+                            q<sub>${totalState}</sub>
+                        </div>
+                    </div>
+                    `;
+                    if(prevState.length == 1) {
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[0]),
+                            document.getElementById(`q${totalState}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[0].charAt(i))}
+                        );
+                        lineIndex++;
+                    }
+                    else {
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[0]),
+                            document.getElementById(`q${totalState}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[0].charAt(i))}
+                        );
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[1]),
+                            document.getElementById(`q${totalState}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[1].charAt(i))}
+                        );
+                        lineIndex+=2;
+                    }
+                    prevState = [`q${totalState}`];
+                    totalState++;
+                }
+                else {
+                    result.innerHTML += `
+                    <div class="stateContainer">
+                        <div class="state" id="q${totalState}">
+                            q<sub>${totalState}</sub>
+                        </div>
+                        <div class="state" id="q${totalState+1}">
+                            q<sub>${totalState+1}</sub>
+                        </div>
+                    </div>
+                    `;
+
+                    if(prevState.length == 1) {
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[0]),
+                            document.getElementById(`q${totalState}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[0].charAt(i))}
+                        );
+                        lineIndex++;
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[0]),
+                            document.getElementById(`q${totalState+1}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[1].charAt(i))}
+                        );
+                        lineIndex++;
+                    }
+                    else {
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[0]),
+                            document.getElementById(`q${totalState}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[0].charAt(i))}
+                        );
+                        lineIndex++;
+                        lines[lineIndex] = new LeaderLine(
+                            document.getElementById(prevState[1]),
+                            document.getElementById(`q${totalState+1}`), 
+                            {color: 'black', size: 2, path: 'straight', middleLabel: LeaderLine.pathLabel(startString[1].charAt(i))}
+                        );
+                        lineIndex++;
+                    }               
+                    prevState = [`q${totalState}`, `q${totalState+1}`];
+                    totalState+=2;
+                }
+
+            }
+
+            for(i=0; i<contain.value.length; i++) {
+                result.innerHTML += `
+                <div class="state" id="q${totalState}">
+                    q<sub>${totalState}</sub>
+                </div>
+                `;
+                totalState++;
+            }
+            for(i=0; i<end.value.length; i++) {
+                result.innerHTML += `
+                <div class="state" id="q${totalState}">
+                    q<sub>${totalState}</sub>
+                </div>
+                `;
+                totalState++;
+            }
+            result.innerHTML += `
+            <div class="state" id="q${totalState}">
+                <div class="final">
+                    q<sub>${totalState}</sub>
+                </div>
+            </div>
+            `;
+            
+        }
+    </script>
+</body>
+</html>
