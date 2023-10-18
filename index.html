@@ -21,22 +21,22 @@
             <tr>
                 <td>Start With: </td>
                 <td>
-                    <input type="text" class="start"><br/>
-                    or, <input type="text" class="start">
+                    <input type="text" class="start" value=""><br/>
+                    or, <input type="text" class="start" value="">
                 </td>
             </tr>
             <tr>
                 <td>Contains: </td>
                 <td>
-                    <input type="text" class="contain"><br/>
-                    or, <input type="text" class="contain">
+                    <input type="text" class="contain" value=""><br/>
+                    or, <input type="text" class="contain" value="">
                 </td>
             </tr>
             <tr>
                 <td>End With: </td>
                 <td>
-                    <input type="text" class="end"><br/>
-                    or, <input type="text" class="end">
+                    <input type="text" class="end" value=""><br/>
+                    or, <input type="text" class="end" value="">
                 </td>
             </tr>
         </table>
@@ -125,10 +125,31 @@
             var end = document.getElementsByClassName("end");
             var maxEnd = end[0].value.length > end[1].value.length ? 0 : 1;
 
-            var string = start[maxStart].value+contain.value+end.value;
             var startString = [start[0].value, start[1].value];
             var containString = [contain[0].value, contain[1].value];
             var endString = [end[0].value, end[1].value];
+
+            var strings = [];
+
+            for(i=0; i<2; i++) {
+                if(startString[i]!='' || startString[maxStart][0] == '' || startString[maxStart][0] == undefined) {
+                    for(j=0; j<2; j++) {
+                        if(containString[j] != '' || containString[maxContain][0] == '' || containString[maxContain][0] == undefined) {
+                            for(k=0; k<2; k++) {
+                                if(endString[k] != '' || endString[maxEnd][0] == '' || endString[maxEnd][0] == undefined) {
+                                    string = startString[i]+containString[j]+endString[k];
+                                    if (!strings.includes(string)) {
+                                        strings.push(string);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            console.log(containString[maxContain][0]);
+            console.log(strings)
 
             var symbols = document.getElementsByClassName("symbol");
             var loopText = '';
@@ -262,6 +283,7 @@
                     document.getElementById("caption1"), 
                     {startSocket: 'top', endSocket: 'top', size: 2, color: 'transparent', middleLabel: LeaderLine.captionLabel(loopText, {color: 'black', lineOffset: 100})}
                 );
+                lineIndex++;
             }
             else {
                 document.getElementById(prevState[0]).innerHTML += `<div class="captionTop" id="caption1"></div>`;
@@ -284,6 +306,7 @@
                     document.getElementById("caption1"), 
                     {startSocket: 'top', endSocket: 'top', size: 2, color: 'transparent', middleLabel: LeaderLine.captionLabel(loopText, {color: 'black', lineOffset: 100})}
                 );
+                lineIndex++;
                 
 
                 lines[lineIndex] = new LeaderLine(
@@ -303,6 +326,7 @@
                     document.getElementById("caption2"), 
                     {startSocket: 'bottom', endSocket: 'bottom', size: 2, color: 'transparent', middleLabel: LeaderLine.captionLabel(loopText, {color: 'black', lineOffset: 100})}
                 );
+                lineIndex++;
             }
 
             
