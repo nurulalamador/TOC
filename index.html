@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="css/all.css" rel="stylesheet"/>
-    <link href="css/style.css?newColor" rel="stylesheet"/>
+    <link href="css/style.css?sidemenu" rel="stylesheet"/>
 </head>
 <body>
     <div class="header">
-        <div class="icon">
+        <div class="icon" id="openMenu">
             <i class="fas fa-bars"></i>
         </div>
         <div class="text">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </a>
-        <div class="featureBox">
+        <div class="featureBox" onclick="comingSoon()">
             <div class="icon">
                 <img src="img/nfa.png"/>
             </div>
@@ -37,6 +37,76 @@
                 <div class="semiTitle">Construct a NFA from your provided language</div>
             </div>
         </div>
+        <div class="featureBox" onclick="comingSoon()">
+            <div class="icon">
+                <img src="img/nfaTree.png"/>
+            </div>
+            <div class="text">
+                <div class="title">Build NFA Tree</div>
+                <div class="semiTitle">Build a NFA Tree from your provided NFA</div>
+            </div>
+        </div>
+        <div class="featureBox" onclick="comingSoon()">
+            <div class="icon">
+                <img src="img/nfaToDfa.png"/>
+            </div>
+            <div class="text">
+                <div class="title">NFA to DFA</div>
+                <div class="semiTitle">Convert your provided NFA to DFA</div>
+            </div>
+        </div>
+        <div class="featureBox" onclick="comingSoon()">
+            <div class="icon">
+                <img src="img/enfaToDfa.png"/>
+            </div>
+            <div class="text">
+                <div class="title">ɛNFA to DFA</div>
+                <div class="semiTitle">Convert your provided NFA to DFA</div>
+            </div>
+        </div>
     </div>
+
+    
+    <div class="sidebarMenuBackground" id="sidebarMenuBackground"></div>
+    <div class="sidebarMenu" id="sidebarMenu">
+        <div class="logo">
+            <img src="img/dfa.png"/>
+        </div>
+        <a href="mailto: nurulalomador@gmail.com">
+            <div class="menu">
+                <div class="icon">
+                    <i class="fas fa-comment-alt"></i>
+                </div>
+                <div class="text">Send Feedback</div>
+            </div>
+        </a>
+        <div class="menu" id="openAcknowledgmentBox">
+            <div class="icon">
+                <i class="fas fa-align-left"></i>
+            </div>
+            <div class="text">Acknowledgment</div>
+        </div>
+        <div class="menu" id="openAboutBox">
+            <div class="icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="text">About</div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("openMenu").onclick = function() {
+            document.getElementById("sidebarMenuBackground").style.display = "block";
+            document.getElementById("sidebarMenu").style.left = "0px";
+        }
+
+        document.getElementById("sidebarMenuBackground").onclick = function() {
+            document.getElementById("sidebarMenuBackground").style.display = "none";
+            document.getElementById("sidebarMenu").style.left = "-315px";
+        }
+
+        function comingSoon() {
+            alert("Coming Soon!")
+        }
+    </script>
 </body>
 </html>
