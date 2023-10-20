@@ -23,7 +23,7 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 .header {
-    background-color: #44DD00;
+    background-color: #50C878;
     color: #FFFFFF;
     padding: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@ a {
 .featureBox .icon {
     display: inline-block;
     vertical-align: middle;
-    background-color: #44DD00;
+    background-color: #50C878;
     border-radius: 12px;
     height: 90px;
     width: 90px;
@@ -113,7 +113,7 @@ a {
     padding: 10px 15px;
     border: none;
     outline: none;
-    border-bottom: #44DD00 solid 2px;
+    border-bottom: #50C878 solid 2px;
     margin: 5px 3px;
 }
 .box .inputBox .or {
@@ -138,7 +138,7 @@ a {
 
 .box #increase, .box #decrease{
     border-radius: 12px;
-    background-color: #44DD00;
+    background-color: #50C878;
     padding: 10px 12px;
     border: none;
     outline: none;
@@ -167,10 +167,10 @@ a {
 .box .addMore {
     margin: 10px 5px;
     border-radius: 12px;
-    background-color: rgba(68, 221, 0, 0.1);
+    background-color: rgb(80, 200, 120,0.1);
     padding: 5px 10px;
-    color: #44DD00;
-    border: 1px solid #44DD00;
+    color: #50C878;
+    border: 1px solid #50C878;
     font-size: 14px;
 }
 
@@ -190,7 +190,7 @@ a {
 
 .bigButton {
     margin: 15px;
-    background-color: #44DD00;
+    background-color: #50C878;
     color: #FFFFFF;
     border-radius: 20px;
     padding: 10px;
@@ -229,7 +229,7 @@ a {
     border-spacing: 5px;
 }
 .box #automatonTable table th {
-    background-color: #44DD00;
+    background-color: #50C878;
     color: #FFFFFF;
     padding: 8px;
     border: 0;
