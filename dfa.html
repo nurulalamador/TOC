@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/all.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html">
+            <div class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </div>            
+        </a>
+        <div class="text">
+            <div class="title">Construct DFA</div>
+        </div>
+    </div>
+    <div class="container" id="preGenerate">
+        <div class="box">
+            <div class="title">Define Your Language</div> 
+        
+            <div class="inputBox">
+                <div class="semiTitle">Total Symbol</div>
+                <input type="number" id="symbolNumber" value="2" readonly/><div id="increase"><i class="fas fa-arrow-up"></i></div><div id="decrease"><i class="fas fa-arrow-down"></i></div>
+            </div>          
+            <div class="inputBox" id="symbolsBox"><div class="semiTitle">Symbols</div><input class="symbol" type="text" maxlength="1"/><input class="symbol" type="text" maxlength="1"/></div>       
+            <div class="inputBox hide" id="startWithBox">
+                <div class="semiTitle">Start With</div>
+            </div>
+            <div class="inputBox hide" id="containBox">
+                <div class="semiTitle">Contains</div>
+            </div>
+            <div class="inputBox hide" id="endWithBox">
+                <div class="semiTitle">End With</div>
+            </div>
+            <div class="addMore" id="addStartWith">
+                <div class="icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="text">Add Start With</div>
+            </div>
+            <div class="addMore" id="addContain">
+                <div class="icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="text" id="addContainText">Add Contain</div>
+            </div>
+            <div class="addMore" id="addEndWith">
+                <div class="icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="text">Add End</div>
+            </div>
+        </div>
+        <div class="bigButton" id="generate">
+            <div class="text">Construct DFA</div>
+            <div class="icon">
+                <i class="fas fa-arrow-right"></i>
+            </div>      
+        </div>
+    </div>
+    <div class="container hide" id="postGenerate">
+        <div class="box">
+            <div class="title">Language</div> 
+            <table class="languageTable">
+                <tr>
+                    <th>Σ</th>
+                    <th>=</th>
+                    <td id="alphabetTd"></td>
+                </tr>
+                <tr>
+                    <th>L</th>
+                    <th>=</th>
+                    <td id="languageTd"></td>
+                </tr>
+            </table>   
+            
+            <div class="gap"></div>
+
+            <div class="title">State Diagram</div>    
+            <div id="automatonGraph"></div>
+
+            <div class="gap"></div>
+
+            <div class="title">Transition Table</div>   
+            <div id="automatonTable"></div> 
+        </div>
+        <div class="bigButton" id="generateAgain">
+            <div class="text">Construct Another DFA</div>
+            <div class="icon">
+                <i class="fas fa-undo"></i>
+            </div>      
+        </div>
+    </div>
+    <script src="js/noam.js"></script>
+    <script src="js/viz.js"></script>
+    <script src="js/dfa.js"></script>
+</body>
+</html>
