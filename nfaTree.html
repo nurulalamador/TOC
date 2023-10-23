@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/all.css" rel="stylesheet"/>
+    <link href="css/style.css?nfaTree" rel="stylesheet"/>
+</head>
+<body>
+    <div class="header">
+        <div class="icon" id="backButton">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="text">
+            <div class="title">NFA Tree</div>
+        </div>
+    </div>
+    <div class="container" id="defineNfa">
+        <div class="box">
+            <div class="title">Define Your NFA</div> 
+        
+            <div class="inputBox">
+                <div class="semiTitle">Total Symbol</div>
+                <input type="number" id="symbolNumber" value="2" readonly/><div id="increaseSymbol" class="upDownButton"><i class="fas fa-arrow-up"></i></div><div id="decreaseSymbol" class="upDownButton"><i class="fas fa-arrow-down"></i></div>
+            </div>          
+            <div class="inputBox" id="symbolsBox"><div class="semiTitle">Symbols</div><input class="symbol" type="text" maxlength="1" value="a"/><input class="symbol" type="text" maxlength="1" value="b"/></div>       
+            <div class="inputBox">
+                <div class="semiTitle">Total State</div>
+                <input type="number" id="stateNumber" value="2" readonly/><div id="increaseState" class="upDownButton"><i class="fas fa-arrow-up"></i></div><div id="decreaseState" class="upDownButton"><i class="fas fa-arrow-down"></i></div>
+            </div>  
+            <div class="inputBox" id="statesBox"><div class="semiTitle">States</div><input class="state" type="text" value="q0"/><input class="state" type="text" value="q1"/></div>               </div>
+        <div class="bigButton" id="nextStep">
+            <div class="text">Next Step</div>
+            <div class="icon">
+                <i class="fas fa-arrow-right"></i>
+            </div>      
+        </div>
+    </div>
+    <div class="container hide" id="defineTransition">
+        <div class="box">
+            <div class="title">Define Transition Table</div> 
+            <div id="transitionTable" class="transitionTable">
+
+            </div>
+            <div class="gap"></div>
+            <div class="title">NFA Preview</div> 
+            <div id="nfaPreview">
+
+            </div>
+            <div class="gap"></div>
+            <div class="title">Input String</div> 
+            <div class="inputBox">
+                <div class="semiTitle">Enter Your Input String</div>
+                <input type="text" class="w100" id="inputString" />
+            </div>  
+        </div>
+        <div class="bigButton" id="generateTree">
+            <div class="text">Construct NFA Tree</div>
+            <div class="icon">
+                <i class="fas fa-undo"></i>
+            </div>      
+        </div>
+        <div class="bigButton" onclick="previousStep()">
+            <div class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </div>      
+            <div class="text">Previous Step</div>
+        </div>
+    </div>
+
+    <div class="container hide" id="finalNfaTree">
+        <div class="box">
+            <div class="title">Input String</div> 
+            <div class="inputBox">
+                <div class="semiTitle">Enter Your Input String</div>
+                <input type="text" class="w100" id="reInputString" />
+                <div class="upDownButton" id="reGenerateTree">Rebuild</div>
+            </div>  
+            <div class="gap"></div>
+            <div class="title">NFA Tree Diagram</div> 
+            <div id="nfaTreeDiagram">
+
+            </div>  
+        </div>
+        <div class="bigButton" id="generateAgain">
+            <div class="text">Construct NFA Tree Again</div>
+            <div class="icon">
+                <i class="fas fa-undo"></i>
+            </div>      
+        </div>
+        <div class="bigButton" onclick="previousPreviousStep()">
+            <div class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </div>      
+            <div class="text">Previous Step</div>
+        </div>
+    </div>
+
+    <div class="dialogBoxBackground hide" id="transitionListBox">
+        <div class="dialogBox">
+            <div class="title">Add Transition</div> 
+            <div class="content">
+                Select Transition State
+            </div> 
+            <div id="transitionList">
+                    
+            </div>
+            <div class="clearButton" id="removeTransition">Clear All Transition</div>
+            <div class="buttons">
+                <div class="button" id="closeTransitionListBox">Close</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tabletojson.js"></script>
+    <script src="js/noam.js"></script>
+    <script src="js/viz.js"></script>
+    <script src="js/nfaTree.js"></script>
+</body>
+</html>

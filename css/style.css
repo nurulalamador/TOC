@@ -152,7 +152,7 @@ a {
     margin: 15px;
     background-color: #FFFFFF;
     border-radius: 20px;
-    padding: 20px;
+    padding: 18px 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .box .title {
@@ -196,7 +196,7 @@ a {
     color: #CC0000;
 }
 
-.box #increase, .box #decrease{
+.box .upDownButton {
     border-radius: 12px;
     background-color: #50C878;
     padding: 10px 12px;
@@ -206,13 +206,23 @@ a {
     vertical-align: middle;
     margin: 5px 2px;
     color: #FFFFFF;
+    font-weight: bold;
 }
-.box #symbolNumber {
+.box #symbolNumber, .box #stateNumber {
     width: calc(100% - 90px);
+}
+
+
+.box #reInputString {
+    width: calc(100% - 95px);
 }
 
 .box .inputBox .symbol {
     width: 40px;
+    text-align: center;
+}
+.box .inputBox .state {
+    width: 60px;
     text-align: center;
 }
 
@@ -233,7 +243,6 @@ a {
     border: 1px solid #50C878;
     font-size: 14px;
 }
-
 
 .addMore .icon {
     display: inline-block;
@@ -272,23 +281,33 @@ a {
     margin: 5px;
     font-weight: bold;
 }
-.box #automatonGraph {
+.box #automatonGraph, .box #nfaPreview {
     padding: 10px;
+    text-align: center;
 }
 
-.box #automatonGraph svg {
-    width: 100%;
+.box #automatonGraph svg, .box #nfaPreview svg{
+    max-width: 100%;
     height: 100%;
 }
 
-.box #automatonTable table {
+.box #nfaTreeDiagram {
+    padding: 10px;
+    text-align: center;
+}
+.box #nfaTreeDiagram svg {
+    max-width: 100%;
+    height: 100%;
+}
+
+.box .transitionTable table {
     width: 100%;
     text-align: center;
     border: 0;
     border-collapse: separate;
     border-spacing: 5px;
 }
-.box #automatonTable table th {
+.box .transitionTable table th {
     background-color: #50C878;
     color: #FFFFFF;
     padding: 8px;
@@ -296,7 +315,7 @@ a {
     border-radius: 10px;
     margin: 5px;
 }
-.box #automatonTable table td {
+.box .transitionTable table td {
     background-color: #EEEEEE;
     padding: 8px;
     border: 0;
@@ -305,6 +324,9 @@ a {
 }
 .right {
     text-align: right;
+}
+.w100 {
+    width: 100%;
 }
 .box .languageTable {
     width: 100%;
@@ -322,4 +344,69 @@ a {
 }
 .box .gap {
     height: 20px;
+}
+
+
+.dialogBoxBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+.dialogBox {
+    position: absolute;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 18px 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    top: 50%;
+    left: calc(50% - 150px);
+    transform: translateY(-50%);
+}
+.dialogBox .buttons {
+    text-align: right;
+}
+.dialogBox .buttons .button {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #50C878;
+    font-weight: bold;
+    margin: 5px 8px;
+}
+.dialogBox .content {
+    padding: 12px 5px;
+}
+.dialogBox .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.dialogBox .addState {
+    margin: 5px;
+    border-radius: 12px;
+    background-color: rgb(80, 200, 120,0.1);
+    padding: 10px 15px;
+    color: #50C878;
+    border: 1px solid #50C878;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    width: 55px;
+    text-align: center;
+}
+.dialogBox .clearButton {
+    background-color: #50C878;
+    color: #FFFFFF;
+    padding: 12px;
+    font-weight: bold;
+    margin: 12px 5px;
+    border-radius: 12px;
+    text-align: center;
 }
