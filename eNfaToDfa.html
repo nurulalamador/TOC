@@ -13,13 +13,12 @@
             <i class="fas fa-arrow-left"></i>
         </div>
         <div class="text">
-            <div class="title">NFA Tree</div>
+            <div class="title">ɛNFA To DFA</div>
         </div>
     </div>
     <div class="container" id="defineNfa">
         <div class="box">
-            <div class="title">Define Your NFA</div> 
-        
+            <div class="title">Define Your ɛNFA</div> 
             <div class="inputBox">
                 <div class="semiTitle">Total Symbol</div>
                 <input type="number" id="symbolNumber" value="2" readonly/><div id="increaseSymbol" class="upDownButton"><i class="fas fa-arrow-up"></i></div><div id="decreaseSymbol" class="upDownButton"><i class="fas fa-arrow-down"></i></div>
@@ -39,24 +38,22 @@
     </div>
     <div class="container hide" id="defineTransition">
         <div class="box">
-            <div class="title">Define NFA Transition Table</div> 
+            <div class="title">Define ɛNFA Transition Table</div> 
             <div id="transitionTable" class="transitionTable">
 
+            </div>
+            <div class="gap"></div>
+            <div class="title">Define Your ɛ-Closures</div> 
+            <div class="eClosures" id="eClosuresTable">
             </div>
             <div class="gap"></div>
             <div class="title">NFA State Diagram Preview</div> 
             <div id="nfaPreview">
 
             </div>
-            <div class="gap"></div>
-            <div class="title">Input String</div> 
-            <div class="inputBox">
-                <div class="semiTitle">Enter Your Input String</div>
-                <input type="text" class="w100" id="inputString"  autocapitalize="none"/>
-            </div>  
         </div>
-        <div class="bigButton" id="generateTree">
-            <div class="text">Construct NFA Tree</div>
+        <div class="bigButton" id="convertToDfa">
+            <div class="text">Convert To DFA</div>
             <div class="icon">
                 <i class="fas fa-arrow-right"></i>
             </div>      
@@ -69,22 +66,20 @@
         </div>
     </div>
 
-    <div class="container hide" id="finalNfaTree">
+    <div class="container hide" id="convertedDfa">
         <div class="box">
-            <div class="title">Input String</div> 
-            <div class="inputBox">
-                <div class="semiTitle">Enter Your Input String</div>
-                <input type="text" class="w100" id="reInputString" autocapitalize="none"/>
-                <div class="upDownButton" id="reGenerateTree">Rebuild</div>
-            </div>  
+            <div class="title">DFA Transition Table</div> 
+            <div id="dfaTransitionTable" class="transitionTable">
+
+            </div>
             <div class="gap"></div>
-            <div class="title">NFA Tree Diagram</div> 
-            <div id="nfaTreeDiagram">
+            <div class="title">DFA State Diagram</div> 
+            <div id="automatonGraph">
 
             </div>  
         </div>
         <div class="bigButton" id="generateAgain">
-            <div class="text">Construct NFA Tree Again</div>
+            <div class="text">Convert Another ɛNFA</div>
             <div class="icon">
                 <i class="fas fa-undo"></i>
             </div>      
@@ -112,9 +107,26 @@
             </div>
         </div>
     </div>
+
+    
+    <div class="dialogBoxBackground hide" id="closureListBox">
+        <div class="dialogBox">
+            <div class="title">Add ɛ-Closure</div> 
+            <div class="content">
+                Select ɛ-Closure State
+            </div> 
+            <div id="closureList">
+                    
+            </div>
+            <div class="clearButton" id="removeClosure">Clear ɛ-Closures</div>
+            <div class="buttons">
+                <div class="button" id="closeClosureListBox">Close</div>
+            </div>
+        </div>
+    </div>
     <script src="js/tabletojson.js"></script>
     <script src="js/noam.js"></script>
     <script src="js/viz.js"></script>
-    <script src="js/nfaTree.js"></script>
+    <script src="js/eNfaToDfa.js"></script>
 </body>
 </html>

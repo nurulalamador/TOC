@@ -24,7 +24,7 @@
         
             <div class="inputBox">
                 <div class="semiTitle">Total Symbol</div>
-                <input type="number" id="symbolNumber" value="2" readonly/><div id="increase"><i class="fas fa-arrow-up"></i></div><div id="decrease"><i class="fas fa-arrow-down"></i></div>
+                <input type="number" id="symbolNumber" value="2" readonly/><div id="increase" class="upDownButton"><i class="fas fa-arrow-up"></i></div><div id="decrease" class="upDownButton"><i class="fas fa-arrow-down"></i></div>
             </div>          
             <div class="inputBox" id="symbolsBox"><div class="semiTitle">Symbols</div><input class="symbol" type="text" maxlength="1"/><input class="symbol" type="text" maxlength="1"/></div>       
             <div class="inputBox hide" id="startWithBox">
@@ -86,7 +86,7 @@
             <div class="gap"></div>
 
             <div class="title">Transition Table</div>   
-            <div id="automatonTable"></div> 
+            <div id="automatonTable" class="transitionTable"></div> 
         </div>
         <div class="bigButton" id="generateAgain">
             <div class="text">Construct Another DFA</div>

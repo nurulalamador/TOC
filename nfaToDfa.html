@@ -13,7 +13,7 @@
             <i class="fas fa-arrow-left"></i>
         </div>
         <div class="text">
-            <div class="title">NFA Tree</div>
+            <div class="title">NFA To DFA</div>
         </div>
     </div>
     <div class="container" id="defineNfa">
@@ -48,15 +48,9 @@
             <div id="nfaPreview">
 
             </div>
-            <div class="gap"></div>
-            <div class="title">Input String</div> 
-            <div class="inputBox">
-                <div class="semiTitle">Enter Your Input String</div>
-                <input type="text" class="w100" id="inputString"  autocapitalize="none"/>
-            </div>  
         </div>
-        <div class="bigButton" id="generateTree">
-            <div class="text">Construct NFA Tree</div>
+        <div class="bigButton" id="convertToDfa">
+            <div class="text">Convert To DFA</div>
             <div class="icon">
                 <i class="fas fa-arrow-right"></i>
             </div>      
@@ -69,22 +63,20 @@
         </div>
     </div>
 
-    <div class="container hide" id="finalNfaTree">
+    <div class="container hide" id="convertedDfa">
         <div class="box">
-            <div class="title">Input String</div> 
-            <div class="inputBox">
-                <div class="semiTitle">Enter Your Input String</div>
-                <input type="text" class="w100" id="reInputString" autocapitalize="none"/>
-                <div class="upDownButton" id="reGenerateTree">Rebuild</div>
-            </div>  
+            <div class="title">DFA Transition Table</div> 
+            <div id="dfaTransitionTable" class="transitionTable">
+
+            </div>
             <div class="gap"></div>
-            <div class="title">NFA Tree Diagram</div> 
-            <div id="nfaTreeDiagram">
+            <div class="title">DFA State Diagram</div> 
+            <div id="automatonGraph">
 
             </div>  
         </div>
         <div class="bigButton" id="generateAgain">
-            <div class="text">Construct NFA Tree Again</div>
+            <div class="text">Convert Another NFA</div>
             <div class="icon">
                 <i class="fas fa-undo"></i>
             </div>      
@@ -115,6 +107,6 @@
     <script src="js/tabletojson.js"></script>
     <script src="js/noam.js"></script>
     <script src="js/viz.js"></script>
-    <script src="js/nfaTree.js"></script>
+    <script src="js/nfaToDfa.js"></script>
 </body>
 </html>

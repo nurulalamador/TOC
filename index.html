@@ -28,7 +28,7 @@
                 </div>
             </div>
         </a>
-        <div class="featureBox" onclick="comingSoon()">
+        <div class="featureBox">
             <div class="icon">
                 <img src="img/nfa.png"/>
             </div>
@@ -37,33 +37,39 @@
                 <div class="semiTitle">Construct a NFA from your provided language</div>
             </div>
         </div>
-        <div class="featureBox" onclick="comingSoon()">
-            <div class="icon">
-                <img src="img/nfaTree.png"/>
+        <a href="nfaTree.html">
+            <div class="featureBox">
+                <div class="icon">
+                    <img src="img/nfaTree.png"/>
+                </div>
+                <div class="text">
+                    <div class="title">Build NFA Tree</div>
+                    <div class="semiTitle">Build a NFA Tree from your provided NFA</div>
+                </div>
             </div>
-            <div class="text">
-                <div class="title">Build NFA Tree</div>
-                <div class="semiTitle">Build a NFA Tree from your provided NFA</div>
+        </a>
+        <a href="nfaToDfa.html">
+            <div class="featureBox">
+                <div class="icon">
+                    <img src="img/nfaToDfa.png"/>
+                </div>
+                <div class="text">
+                    <div class="title">NFA to DFA</div>
+                    <div class="semiTitle">Convert your provided NFA to DFA</div>
+                </div>
             </div>
-        </div>
-        <div class="featureBox" onclick="comingSoon()">
-            <div class="icon">
-                <img src="img/nfaToDfa.png"/>
+        </a>
+        <a href="eNfaToDfa.html">
+            <div class="featureBox">
+                <div class="icon">
+                    <img src="img/enfaToDfa.png"/>
+                </div>
+                <div class="text">
+                    <div class="title">ɛNFA to DFA</div>
+                    <div class="semiTitle">Convert your provided ɛNFA to DFA</div>
+                </div>
             </div>
-            <div class="text">
-                <div class="title">NFA to DFA</div>
-                <div class="semiTitle">Convert your provided NFA to DFA</div>
-            </div>
-        </div>
-        <div class="featureBox" onclick="comingSoon()">
-            <div class="icon">
-                <img src="img/enfaToDfa.png"/>
-            </div>
-            <div class="text">
-                <div class="title">ɛNFA to DFA</div>
-                <div class="semiTitle">Convert your provided NFA to DFA</div>
-            </div>
-        </div>
+        </a>
     </div>
 
     
@@ -93,6 +99,17 @@
             <div class="text">About</div>
         </div>
     </div>
+    <div class="dialogBoxBackground hide" id="aboutBox">
+        <div class="dialogBox">
+            <div class="title">About</div> 
+            <div class="content">
+                Developed by Nurul Alam Ador
+            </div>
+            <div class="buttons">
+                <div class="button" id="closeAboutBox">Close</div>
+            </div>
+        </div>
+    </div>
     <script>
         document.getElementById("openMenu").onclick = function() {
             document.getElementById("sidebarMenuBackground").style.display = "block";
@@ -102,6 +119,17 @@
         document.getElementById("sidebarMenuBackground").onclick = function() {
             document.getElementById("sidebarMenuBackground").style.display = "none";
             document.getElementById("sidebarMenu").style.left = "-315px";
+        }
+
+        
+        document.getElementById("openAboutBox").onclick = function() {
+            document.getElementById("sidebarMenuBackground").style.display = "none";
+            document.getElementById("sidebarMenu").style.left = "-315px";
+            document.getElementById("aboutBox").classList.remove("hide"); 
+        }
+
+        document.getElementById("closeAboutBox").onclick = function() {
+            document.getElementById("aboutBox").classList.add("hide"); 
         }
 
         function comingSoon() {

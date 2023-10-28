@@ -307,20 +307,27 @@ a {
     border-collapse: separate;
     border-spacing: 5px;
 }
+.box .transitionTable table .start::before {
+    content: "→ ";
+}
 .box .transitionTable table th {
     background-color: #50C878;
     color: #FFFFFF;
-    padding: 8px;
+    padding: 10px;
     border: 0;
     border-radius: 10px;
     margin: 5px;
 }
 .box .transitionTable table td {
     background-color: #EEEEEE;
-    padding: 8px;
+    padding: 10px;
     border: 0;
     border-radius: 10px;
     margin: 5px;
+}
+.box .transitionTable table td:empty:before {
+    content: "Ø";
+    color: rgba(0,0,0,0.3);
 }
 .right {
     text-align: right;
@@ -346,7 +353,9 @@ a {
     height: 20px;
 }
 
-
+.bold {
+    font-weight: bold;
+}
 .dialogBoxBackground {
     position: fixed;
     top: 0;
@@ -409,4 +418,37 @@ a {
     margin: 12px 5px;
     border-radius: 12px;
     text-align: center;
+}
+
+
+.eClosures table {
+    width: 100%;
+    text-align: center;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+.eClosures table th {
+    background-color: #50C878;
+    color: #FFFFFF;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    margin: 5px;
+}
+.eClosures table td {
+    background-color: #EEEEEE;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    margin: 5px;
+}
+.eClosures table .hide {
+    display: none;
+}
+.eClosures table .closuresSet::before {
+    content: "{ ";
+}
+.eClosures table .closuresSet::after {
+    content: " }";
 }

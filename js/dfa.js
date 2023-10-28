@@ -1,3 +1,23 @@
+function removeOverlap(str1, str2) {
+    let overlap = "";
+    let len = Math.min(str1.length, str2.length);
+  
+    for (let i = 1; i <= len; i++) {
+        if (str1.slice(-i) === str2.slice(0, i)) {
+        overlap = str1.slice(-i);
+        }
+    }
+  
+    let finalString = str2.replace(overlap, "");
+
+    if(finalString == "") {
+        return "$";
+    }
+    else {
+        return finalString;
+    }
+}
+
 var totalSymbol = 2;
 
 var symbolNumber = document.getElementById("symbolNumber");
@@ -67,6 +87,7 @@ function addInput(inputClass, inputClassBox) {
 
 document.getElementById("generate").onclick = function() {
     var isError = false;
+    var newString;
 
     var symbol = document.getElementsByClassName("symbol");
     var symbolExp = "(";
@@ -96,6 +117,14 @@ document.getElementById("generate").onclick = function() {
         containExp += contain[i].value;
         if(contain[i].value == "" || contain[i].value == undefined) isError = true;
     }
+    for(var i=0; i<start.length; i++) {
+        for(var j=0; j<contain.length; j++) {
+            newString = removeOverlap(start[i].value, contain[j].value);
+            if(contain[j].value != newString) {
+                containExp += "+"+newString;
+            }
+        }    
+    }
     containExp += ")";
     if(containExp == "()") containExp = "";
 
@@ -106,6 +135,26 @@ document.getElementById("generate").onclick = function() {
         if(i!=0) endExp += "+";
         endExp += end[i].value;
         if(end[i].value == "" || end[i].value == undefined) isError = true;
+    }
+    if(contain.length == 0) {
+        for(var i=0; i<start.length; i++) {
+            for(var j=0; j<end.length; j++) {
+                newString = removeOverlap(start[i].value, end[j].value);
+                if(end[j].value != newString) {
+                    endExp += "+"+newString;
+                }
+            }    
+        }
+    }
+    else {
+        for(var i=0; i<contain.length; i++) {
+            for(var j=0; j<end.length; j++) {
+                newString = removeOverlap(contain[i].value, end[j].value);
+                if(end[j].value != newString) {
+                    endExp += "+"+newString;
+                }
+            }    
+        }
     }
     endExp += ")";
     if(endExp == "()") endExp = "";
@@ -123,6 +172,7 @@ document.getElementById("generate").onclick = function() {
 
     if(finalRegEx == symbolExp+"*") finalRegEx = symbolExp+finalRegEx;
 
+    console.log(finalRegEx);
 
     var symbol = document.getElementsByClassName("symbol");
     var alphabet = "{ ";
@@ -141,7 +191,7 @@ document.getElementById("generate").onclick = function() {
             language += '"'+start[i].value+'" ';
         }
     }
-    if(contain.length != 0 || end.length != 0) language += "; "
+    if(start.length != 0 && contain.length != 0) language += "; "
 
     if(contain.length != 0) {    
         language += "contains ";
@@ -150,7 +200,7 @@ document.getElementById("generate").onclick = function() {
             language += '"'+contain[i].value+'" ';
         }
     }
-    if(end.length != 0) language += "; "
+    if((start.length != 0 || contain.length != 0) && end.length != 0) language += "; "
 
     if(end.length != 0) {    
         language += "end with ";
